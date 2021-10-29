@@ -26,6 +26,12 @@ class Graph:
         except TypeError:
             print('Please provide an number or a string instead.')
 
+    def __getitem__(self, item1, item2=None):
+        if item2:
+            return self.nodes[item1][item2]
+        else:
+            return self.nodes[item1]
+
     def __contains__(self, item):
         """Returns True if item is a node on the graph"""
         try:
@@ -56,7 +62,7 @@ class Graph:
         """
         return len(self.nodes)
 
-    def add_edge(self, u, v, name=None):
+    def add_edge(self, u, v):
         """
         Adds an edge between vertices u and v
         :param u: Must be provided. If u doesn't exist, it will be created
@@ -69,8 +75,8 @@ class Graph:
             self.nodes[v] = {}
 
         # create the edge
-        self.nodes[u][v] = name
-        self.nodes[v][u] = name
+        self.nodes[u][v] = str(u) + str(v)
+        self.nodes[v][u] = str(v) + str(u)
 
     def vertices(self):
         """
@@ -137,6 +143,8 @@ if __name__ == '__main__':
     print(g.edges())
     print(g.deg('b'))
     print(g.is_edge('b', 'a'))
+    print(g.nodes)
+    print(g['a']['b'])
 
 
 # QUESTION 2
