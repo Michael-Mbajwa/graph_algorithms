@@ -62,12 +62,12 @@ class Graph:
         """
         return len(self.nodes)
 
-    def add_edge(self, u, v):
+    def add_edge(self, u, v, label=None):
         """
         Adds an edge between vertices u and v
         :param u: Must be provided. If u doesn't exist, it will be created
         :param v: Must be provided. If v doesn't exist, it will be created
-        :param name: Refers to the name of the edge. Default value is None.
+        :param label: Refers to the name of the edge. Default value is None.
         """
         if u not in self.nodes:
             self.nodes[u] = {}
@@ -75,8 +75,8 @@ class Graph:
             self.nodes[v] = {}
 
         # create the edge
-        self.nodes[u][v] = str(u) + str(v)
-        self.nodes[v][u] = str(v) + str(u)
+        self.nodes[u][v] = label
+        self.nodes[v][u] = label
 
     def vertices(self):
         """
@@ -133,10 +133,10 @@ class Graph:
 # To test the graph class, we can create a simple graph
 if __name__ == '__main__':
     g = Graph()
-    g.add_edge('a', 'b')
-    g.add_edge('a', 'd')
-    g.add_edge('b', 'd')
-    g.add_edge('c', 'b')
+    g.add_edge('a', 'b', label='ab')
+    g.add_edge('a', 'd', label='ad')
+    g.add_edge('b', 'd', label='bd')
+    g.add_edge('c', 'b', label='cb')
     print(len(g))
     print(g.number_of_vertices())
     print(g.vertices())
