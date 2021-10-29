@@ -75,8 +75,12 @@ class Graph:
             self.nodes[v] = {}
 
         # create the edge
-        self.nodes[u][v] = label
-        self.nodes[v][u] = label
+        if label:
+            self.nodes[u][v] = label
+            self.nodes[v][u] = label
+        else:
+            self.nodes[u][v] = str(u) + str(v)
+            self.nodes[v][u] = str(u) + str(v)
 
     def vertices(self):
         """
@@ -134,9 +138,9 @@ class Graph:
 if __name__ == '__main__':
     g = Graph()
     g.add_edge('a', 'b', label='ab')
-    g.add_edge('a', 'd', label='ad')
-    g.add_edge('b', 'd', label='bd')
-    g.add_edge('c', 'b', label='cb')
+    g.add_edge('a', 'd')
+    g.add_edge('b', 'd')
+    g.add_edge('c', 'b')
     print(len(g))
     print(g.number_of_vertices())
     print(g.vertices())
