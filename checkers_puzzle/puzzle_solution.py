@@ -138,8 +138,10 @@ class Graph:
         """
         param start: start vertex
         param dest: destination vertex
-        param dist: a dictionary containing all vertices. Stores each vertex as a key and stores the distance to the start vertex as a                     value.
-        param pred: a dictionary containing all vertices. Stores each vertex as a key and stores the preceeding vertex to the key as the                     value.
+        param dist: a dictionary containing all vertices. Stores each vertex as a key and stores the distance to
+        the start vertex as a value.
+        param pred: a dictionary containing all vertices. Stores each vertex as a key and stores the preceding
+        vertex to the key as the value.
         """
         # A queue to maintain a list of vertices from the dictionary to be scanned.
         queue = []
@@ -180,7 +182,8 @@ class Graph:
         Function uses the breadth first search algorithm to return the shortest path from start to destination
         :param start: The start vertex
         :param dest: The destination vertex
-        :return: Returns the length of the shortest path as an integer and a list that shows the walk from start to destination using                 the shortest path
+        :return: Returns the length of the shortest path as an integer and a list that shows the walk from start to
+        destination using the shortest path
         """
 
         dist = {}  # A dictionary that stores all vertices in the graph as keys. It stores the distance from each
@@ -303,6 +306,6 @@ if __name__ == '__main__':
 
     G.shortest_path(start=str(random_start), dest=str(destination))
 
-    # Because our graph is a very large one with over 40000 vertices, I can instead just find out how many sublists our
+    # Because our graph is a very large one with over 40000 vertices, I can instead just find out how many sublist our
     # connected components have. The result determines if our graph is strongly connected or not.
     print(len(G.connected_components()))
